@@ -10,6 +10,8 @@
   <div class="container">
     <h1>Pomodoro</h1>
 
+    <div class="current-time" id="currentTime"></div>
+
     <div class="timer">25:00</div>
 
     <div class="controls">
@@ -21,5 +23,16 @@
     <a href="setting.html" class="btn btn-settings">설정</a>
   </div>
   <script src="index.js"></script>
+  <script>
+    function updateClock() {
+      const now = new Date();
+      const h = String(now.getHours()).padStart(2, '0');
+      const m = String(now.getMinutes()).padStart(2, '0');
+      const s = String(now.getSeconds()).padStart(2, '0');
+      document.getElementById('currentTime').textContent = `${h}:${m}:${s}`;
+    }
+    updateClock();
+    setInterval(updateClock, 1000);
+  </script>
 </body>
 </html>
